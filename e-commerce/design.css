@@ -240,6 +240,7 @@ cursor: pointer;
     left:140px;
     cursor: pointer;
     margin-right: 20px;
+    font-family: 'Kumbh Sans', sans-serif;font-weight:bolder;
 
   }
    .cart_btn{
@@ -332,9 +333,26 @@ font-family: 'Sen', sans-serif;
   cursor: pointer;
   color: #333;
 }
+.box{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:space-between;
+  border-radius: 1px solid #aaa;
+  border-radius: 5px;
+  padding:25px;
+
+  top:50px;
   
 
+}
+.image{
+  position: absolute;
 
-  
-  
- 
+  border-radius: 3px;
+  height: 40px;
+  width: 40px;
+  top:22px;
+  left:10px;
+}

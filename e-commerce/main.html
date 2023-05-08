@@ -144,8 +144,9 @@ function openCart() {
 
                 id:1,
                  image:"images/image-product-1-thumbnail.jpg",
-                name:'Fall imited Edition Sneakers',
-                price:125
+                name:"Fall Limited Edition Sneakers",
+                price:125,
+                num:num
             }
         ];
 
@@ -155,18 +156,31 @@ function openCart() {
                  document.getElementById('cart_control').innerHTML=categories.map((item) =>
                  {
 
-                    var{image,title,price} = item;
+                    var{image,name,price,num} = item;
                     return(
-                        `<div class='box'>
+                        ` 
+                       
+                    <p class='cart_head' > Cart </p>
+                        
+                    <hr class='cart_line'>
+                    <button style="padding:13px;font-family: 'Kumbh Sans', sans-serif; font-weight:bolder; color:white; border:2px solid hsl(26, 100%, 55%);  border-radius: 10px; width:80%; position:absolute; bottom:30px; left:30px;  background-color: hsl(26, 100%, 55%);" > Checkout   </button>
+            
+                        
+                       
+
+                        <div class='box'>
+                            <img class='image' src='images/image-product-1-thumbnail.jpg'</img> 
                             <div class='img-box'>
-                                <img class= 'images' src = ${image}></img>
                          </div>
+                         <i class="fa fa-trash" aria-hidden="true"  style=" position:absolute; color:grey; right:5px; top:35px; font-size: 0.73em;"></i>
                          <div class ='bottom'>      
-                            <p>${name}<p>   
-                               <h2> $ ${price}.00 </h2> `+
-                             
-                        `</div>
-                        </div>`
+                            <p style="margin-left:45px; font-size:13px; padding-bottom:5px; font-family: 'Kumbh Sans', sans-serif; color: rgb(197, 191, 191); " > ${name}</p>   
+                               <p  style="font-size:12px;margin-left:45px;font-family: 'Kumbh Sans', sans-serif;font-weight:bolder;  color: rgb(197, 191, 191);" > $${price}.00 </p> 
+                             <p style="position:absolute; bottom:20px; left:120px; color: rgb(197, 191, 191); " >  * </p>
+                          
+                    </div>
+                        </div>  `
+                        
                     )
 
                  
@@ -188,7 +202,7 @@ function openCart() {
             else{
                 document.getElementById(cart_control).innerHTML = cart.map((items) =>
                 {
-                    var{image,title,price} = items;
+                    var{image,name,price,num} = items;
                     return(
                         `<div class = 'cart-item'>
                             <div class = 'row-img'>
@@ -196,13 +210,13 @@ function openCart() {
                                  </div>
                                  <p style= 'font-style:12px;'>${name}</p>
                                  <h2 style= 'font-size:15px;'>${price}.00</h2>
-                               
-                        
+                                 <p style ="";${num}</p>
+                            </div>
                         `
 
-                    );
+                    )
 
-                })
+                });
             }
         }
 
