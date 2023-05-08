@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakers</title>
+    
+    <script src="https://kit.fontawesome.com/8ea0728653.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="design.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Permanent+Marker&family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div  class="container">
+        
+            <div class="nav">
+
+                <h2 class="heading">sneakers</h2>
+                
+                  <div class="nav_items">
+                   
+                    <ul>
+                    <li><a href="">Collections</a></li>
+                    <li><a href="">Men</a></li>
+                    <li><a href="">Women</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li> 
+                    </ul>
+
+                </div>
+                <div onclick="openCart()">
+                <i class="fa fa-shopping-cart cart " aria-hidden="true"   ></i>
+                </div>
+                <div  class="profile-container">
+                    <img class="profile-picture" src="images/image-avatar.png">
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="images">
+
+                <img class="pic1" id="pic1" src="images/image-product-1.jpg">
+
+
+                   <div class="small_img">
+
+                    <ul class="container_img">
+
+               <li class="item" > <img class="img"   src="images/image-product-1-thumbnail.jpg">  </li> 
+                <li class="item" > <img class="img"  src="images/image-product-2-thumbnail.jpg"> </li>
+                <li class="item" > <img class="img"   src="images/image-product-3-thumbnail.jpg"> </li> 
+                <li class="item"> <img class="img"  src="images/image-product-4-thumbnail.jpg"> </li>
+
+                     </ul>
+
+                  </div>
+
+
+            </div>
+
+            <div class="product">
+
+                <p class="company_title" >SNEAKER COMPANY </p>
+                <small class="shoe_name">Fall Limited Edition Sneakers</small>
+                <small class="shoe_desc"> These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole they'll withstand everything the weather can offer</small>
+                <small class="price" >$125.00</small>
+                <small class="discount" >50%</small>
+                <small class="initial_price" ><del> $250.00 </del></small>
+
+                    <div class="wrapper">
+                            <span class="minus">-</span>
+                            <span class="num">1</span>
+                            <span class="plus">+</span>
+                    </div>
+
+                    <div class="control_btn">
+
+                              
+                              <button class="addtocart"  ><i class="fa fa-shopping-cart cart_btn " aria-hidden="true"></i>&nbsp&nbsp Add to cart </button>
+
+                     </div>
+                  
+                
+
+            </div>
+
+
+                <div class="cart_control" id="cart_control">
+                    <p class="cart_head" > Cart </p>
+                        <p class="cart_empty" >Your Cart is empty.</p>
+                    <hr class="cart_line">
+                    
+
+
+
+                </div> 
+
+
+
+    </div>
+
+    <script>
+        let cart_control = document.getElementById("cart_control");
+
+function openCart() {
+   cart_control.classList.add("open-cart_control");
+}
+
+
+
+        const plus= document.querySelector(".plus"),
+        minus=document.querySelector(".minus"),
+        num = document.querySelector(".num");
+
+        let a = 1;
+
+        plus.addEventListener("click", ()=>{
+            a++;
+            a = (a <10) ? + a :a;
+            num.innerText = a;
+            console.log(a);
+        });
+        minus.addEventListener("click", ()=>{
+              if(a>1){
+                a--;
+                a = (a<10) ?  + a : a;
+                num.innerText = a;
+              }
+        });
+
+
+
+
+
+
+
+
+          let product = [ 
+            {
+
+                id:1,
+                 image:"images/image-product-1-thumbnail.jpg",
+                name:'Fall imited Edition Sneakers',
+                price:125
+            }
+        ];
+
+        const categories = [  ...new Set(product.map((item) =>
+                 {return item}))]
+                 let i = 0;
+                 document.getElementById('cart_control').innerHTML=categories.map((item) =>
+                 {
+
+                    var{image,title,price} = item;
+                    return(
+                        `<div class='box'>
+                            <div class='img-box'>
+                                <img class= 'images' src = ${image}></img>
+                         </div>
+                         <div class ='bottom'>      
+                            <p>${name}<p>   
+                               <h2> $ ${price}.00 </h2> `+
+                             
+                        `</div>
+                        </div>`
+                    )
+
+                 
+        }).join('')  
+        var cart = [];
+
+
+        function addtocart(a){
+            cart.push({...categories[a]});
+            displayCart();
+        }
+
+        function displayCart(a){
+
+            let j = 0;
+            if(cart.length ==0){
+                document.getElementById(cart_control).innerHTML = "Your cart is empty";
+            }
+            else{
+                document.getElementById(cart_control).innerHTML = cart.map((items) =>
+                {
+                    var{image,title,price} = items;
+                    return(
+                        `<div class = 'cart-item'>
+                            <div class = 'row-img'>
+                                 <img class = 'rowimg' src = ${image}>
+                                 </div>
+                                 <p style= 'font-style:12px;'>${name}</p>
+                                 <h2 style= 'font-size:15px;'>${price}.00</h2>
+                               
+                        
+                        `
+
+                    );
+
+                })
+            }
+        }
+
+
+        
+
+        
+
+
+
+
+    </script>
+    
+</body>
+</html>
